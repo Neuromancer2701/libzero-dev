@@ -1,0 +1,18 @@
+#!/bin/sh -e
+
+################################################
+# set the tool chain environment variables
+#
+
+
+unset $PATH
+
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+export ARCH=arm
+export CROSS_COMPILE=/opt/gcc-arm-none-eabi/bin/arm-none-eabi-
+export PATH="/opt/gcc-arm-none-eabi/bin:$PATH"
+
+PS1="\[\e[32;1m\][zero_dev]\[\e[0m\]:\W "
+
+
