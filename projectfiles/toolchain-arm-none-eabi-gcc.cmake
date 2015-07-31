@@ -1,22 +1,31 @@
 include(CMakeForceCompiler)
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_PROCESSOR cortex-m0plus)
+set(TARGET_TRIPLET "arm-none-eabi")
+
  
-find_program(ARM_CC arm-none-eabi-gcc
+find_program(ARM_CC ${TARGET_TRIPLET}-gcc
     ${TOOLCHAIN_DIR}/bin
     )
-find_program(ARM_CXX arm-none-eabi-g++
+find_program(ARM_CXX ${TARGET_TRIPLET}-g++
     ${TOOLCHAIN_DIR}/bin
     )
-find_program(ARM_OBJCOPY arm-none-eabi-objcopy
+find_program(ARM_OBJCOPY ${TARGET_TRIPLET}-objcopy
     ${TOOLCHAIN_DIR}/bin
     )
-find_program(ARM_SIZE_TOOL arm-none-eabi-size
+find_program(ARM_SIZE_TOOL ${TARGET_TRIPLET}-size
+    ${TOOLCHAIN_DIR}/bin)
+
+find_program(ARM_STRIP_TOOL ${TARGET_TRIPLET}-strip
     ${TOOLCHAIN_DIR}/bin)
  
 CMAKE_FORCE_C_COMPILER(${ARM_CC} GNU)
 CMAKE_FORCE_CXX_COMPILER(${ARM_CXX} GNU)
- 
+
+
+set(TOOLCHAIN_INC_DIR ${TOOLCHAIN_DIR}/${TARGET_TRIPLET}/include)
+set(TOOLCHAIN_LIB_DIR ${TOOLCHAIN_DIR}/${TARGET_TRIPLET}/lib)
+
 set(CMAKE_C_FLAGS
   "${CMAKE_C_FLAGS}"
   "-fno-common -ffunction-sections -fdata-sections"
