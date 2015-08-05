@@ -9,6 +9,13 @@ function(make_firmware TARGET_NAME)
     set(PROJECT_OUTPUT_DIRECTORY "/home/countzero/repos/libzero-dev/output")
     set(PROJECT_PATH ${PROJECT_OUTPUT_DIRECTORY}/${TARGET_NAME})
 
+
+    #/opt/openocd/share/openocd/scripts/board/atmel_samd21_xplained_pro.cfg
+
+
+    openocd -s /opt/openocd/share/openocd/scripts/ -f board/atmel_samd21_xplained_pro.cfg
+
+board/atmel_samd21_xplained_pro.cfg
     # Convert firmware image to ASCII HEX format
     add_custom_command(TARGET ${TARGET_NAME} POST_BUILD
                         COMMAND ${CMAKE_OBJCOPY}
@@ -36,7 +43,7 @@ set(DEVICE SAMD21)
 
 # Set Linker Script dir
 set(LINKER_SCRIPT_DIR "${REPOS_DIR}/ldscripts")
-set(LINKER_SCRIPT "${LINKER_SCRIPT_DIR}/flash_without_bootloader.ld")
+set(LINKER_SCRIPT "${LINKER_SCRIPT_DIR}/flash_with_bootloader.ld")
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
 SET( CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} --specs=nosys.specs" )
