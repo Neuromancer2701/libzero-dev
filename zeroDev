@@ -4,15 +4,14 @@
 # set the tool chain environment variables
 #
 
-
-unset $PATH
-
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-
 export ARCH=arm
 export CROSS_COMPILE=/opt/gcc-arm-none-eabi/bin/arm-none-eabi-
 export PATH="/opt/gcc-arm-none-eabi/bin:$PATH"
 export PATH="/opt/openocd/bin:$PATH"
+
+export SCRIPT_DIR=/opt/openocd/share/openocd/scripts
+export BOARD_SCRIPT=board/atmel_samd21_xplained_pro.cfg
+
 
 PS1="\[\e[32;1m\][zero_dev]\[\e[0m\]:\W "
 
