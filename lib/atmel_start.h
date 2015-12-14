@@ -29,7 +29,6 @@
 #include <hal_adc_async.h>
 
 #include "hal_usb_device.h"
-#include "usbd_cdc_ser_echo.h"
 #include <hal_crc_sync.h>
 
 extern struct timer_descriptor TIMER_0;
